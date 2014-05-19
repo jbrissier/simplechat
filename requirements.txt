@@ -1,0 +1,5 @@
+django
+south
+coverage
+hamlpy
+django-tinymce
