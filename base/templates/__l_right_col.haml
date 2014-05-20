@@ -3,10 +3,13 @@
 {% block 'content' %}
 .container-fluid
     .row
-        .col-xs-12
+        .col-xs-12.col-sm-8
             {% block  'main-col' %}
             {% endblock %}
 
+        .col-xs-12.col-sm-4
+            {% block 'right-col' %}
+            {% endblock %}
     .row
         .col-xs-12
             {% block 'footer' %}
