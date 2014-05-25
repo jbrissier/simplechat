@@ -2,6 +2,7 @@ import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+COMPRESS_ENABLED = True
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -80,6 +81,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
     #'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
@@ -140,6 +142,7 @@ EXTERNAL_APPS = [
     'south',
     'tinymce',
     'base',
+    'compressor',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

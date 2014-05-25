@@ -1,5 +1,11 @@
-django
-south
-coverage
-hamlpy
-django-tinymce
+Django==1.6.5
+Markdown==2.4
+Pygments==1.6
+South==0.8.4
+coverage==3.7.1
+django-appconf==0.6
+django-compressor==1.4
+django-tinymce==1.5.2
+hamlpy==0.82.2
+six==1.6.1
+wsgiref==0.1.2
