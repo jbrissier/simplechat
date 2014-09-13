@@ -139,7 +139,7 @@ EXTERNAL_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'south',
+
     'tinymce',
     'base',
     'compressor',
