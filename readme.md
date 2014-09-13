@@ -5,7 +5,7 @@ It is not ready for production
 
 
 ## Features
- - Django 1.6
+ - Django 1.7
  - Compressor plugin
  - Haml support
 
@@ -23,10 +23,14 @@ install the dependencies
 
     pip install -r requirements.txt
 
-create the db
+create the db and migrate the database
 
-    python manage.py syncdb --all
+    python manage.py migrate
 
+
+create super user
+
+    python manage.py createsuperuser
 
 
 
