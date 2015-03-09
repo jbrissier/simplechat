@@ -11,8 +11,7 @@ loaddata:
 	python2.7 manage.py loaddata $(project)/fixtures/bootstrap_sites.json
 
 syncdb:
-	python2.7 manage.py syncdb --all --noinput
-	python2.7 manage.py migrate --fake
+	python2.7 manage.py migrate
 
 build: syncdb loaddata
 
