@@ -2,7 +2,8 @@
 (function() {
   var MessageObject, MessageStore, StateModel, _ref, _ref1, _ref2,
     __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+    _this = this;
 
   MessageObject = (function(_super) {
     __extends(MessageObject, _super);
@@ -48,7 +49,9 @@
       return _ref2;
     }
 
-    StateModel.prototype.url = window.message_backend;
+    StateModel.prototype.url = function() {
+      return window.message_backend + "?count=" + this.get('count');
+    };
 
     StateModel.prototype.initialize = function() {
       return this.messages = new MessageStore();
@@ -58,12 +61,13 @@
       count: 0
     };
 
-    StateModel.prototype.pare = function(response) {
+    StateModel.prototype.parse = function(response) {
       if (_.has(response, 'messages')) {
         if (this.messages) {
-          this.messages.reset(response.messages);
-        } else {
-          this.messages = new MessageStore(response.messages);
+          this.messages.push(response.messages);
+          if (response.messages.length > 0) {
+            this.messages.trigger('change');
+          }
         }
         delete response.messages;
       }
@@ -83,5 +87,9 @@
   window.message_obj = MessageObject;
 
   window.message_store = window.state.messages;
+
+  window.setInterval(function() {
+    return window.state.fetch();
+  }, 1000);
 
 }).call(this);

@@ -13,19 +13,20 @@ class MessageStore extends Backbone.Collection
 
 
 class StateModel extends Backbone.Model
-    url: window.message_backend
+    url: ->
+        window.message_backend+"?count="+@.get 'count'
     initialize:->
         @messages = new MessageStore()
 
     defaults:
         count : 0
 
-    pare: (response)->
+    parse: (response)->
         if _.has(response, 'messages')
             if @messages
-                @messages.reset(response.messages)
-            else
-                @messages = new MessageStore(response.messages)
+                @messages.push(response.messages)
+                if response.messages.length > 0
+                    @messages.trigger('change')
 
             delete response.messages
 
@@ -40,4 +41,8 @@ window.state.fetch()
 window.message_obj = MessageObject
 window.message_store = window.state.messages
 
+window.setInterval(=>
+
+        window.state.fetch()
+    ,1000)
 

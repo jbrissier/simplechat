@@ -20,13 +20,23 @@ class SimpleMessageChat(APIView):
 
     def get(self, request, *args, **kwargs):
 
-        raw_messages = self.redis.lrange(self.channel_key, -10, -1)
+        count = -10
+
+        if 'count' in request.GET:
+            count = int(request.GET['count'])
+            print 'count..............'
+            if count == 0:
+                count = -10
+            raw_messages = self.redis.lrange(self.channel_key,  count, -1)
+        else:
+            raw_messages = self.redis.lrange(self.channel_key, -10, -1)
+
         last_massages = []
 
         for i in raw_messages:
             last_massages.append(json.loads(i))
         count = self.redis.get(self.channel_counter)
-        return Response({'messages':last_massages, 'count': count})
+        return Response({'messages': last_massages, 'count': count})
 
     def post(self, request, *args, **kwargs):
 

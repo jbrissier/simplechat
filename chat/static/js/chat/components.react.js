@@ -2,7 +2,7 @@ var Message = React.createClass({
 
     render:function(){
 
-        return <p>{this.props.message.get('id')}<b>{this.props.message.get('user')}: </b>{this.props.message.get('message')}</p>
+        return <p>[{this.props.message.get('id')}]<b>{this.props.message.get('user')}: </b>{this.props.message.get('message')}</p>
     }
 
 
@@ -15,7 +15,7 @@ var ChatInput = React.createClass({
             val = e.target.value
             a = new message_obj({message:val, user:window.username})
             a.save()
-            message_store.push(a)
+            //message_store.push(a)
             e.target.value = ""
         }
 
@@ -37,7 +37,7 @@ var ChatInput = React.createClass({
 
 var ChatApp = React.createClass({
     componentDidMount:function(){
-        this.props.store.on('add remove', function(){
+        this.props.store.on('change', function(){
             this.forceUpdate()
 
         },this);
