@@ -10,3 +10,4 @@ hamlpy==0.82.2
 six==1.6.1
 wsgiref==0.1.2
 django-sekizai
+djangorestframework
