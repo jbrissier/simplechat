@@ -12,7 +12,8 @@ counter = 0
 
 class SimpleMessageChat(APIView):
     channel_key = "channel:4711"
-    def __init__(self,*args, **kwarg):
+
+    def __init__(self, *args, **kwarg):
         self.redis = redis.StrictRedis(host='localhost')
         super(SimpleMessageChat, self).__init__(*args, **kwarg)
 
