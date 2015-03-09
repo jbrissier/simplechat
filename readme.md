@@ -1,6 +1,5 @@
 # Simple Chat App (vor testing) 
-Simple Chat App to test React.js and Backbon.js with the DjangoRestframework and Redis as Database Backend
-
+Simple Chat App to test React.js and Backbon.js with the DjangoRestframework and Redis as database backend 
 
 
 
