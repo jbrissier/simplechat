@@ -1,7 +1,8 @@
-# Bootstrap
+# Simple Chat App (vor testing) 
+Simple Chat App to test React.js and Backbon.js with the DjangoRestframework and Redis as Database Backend
 
-This a boostrap Django project.
-It is not ready for production
+
+
 
 
 ## Features
