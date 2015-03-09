@@ -1,0 +1,37 @@
+{%extends '__l_base.html' %}
+
+{%load sekizai_tags staticfiles %}
+-block 'title'
+    {{block.super}} | Simple Chat
+
+/example usage
+-block 'main-col'
+    .row
+        .col-xs-8.col-xs-offset-2
+
+            %h1 Simple Chat
+            #chat
+                No Chat availabel
+
+
+
+-block 'footer'
+
+
+
+    {% addtoblock "js" %}
+
+        :javascript
+            window.message_backend = "{%url 'message_backend' %}";
+
+
+
+
+        %script{src:"{%static 'js/underscore.js' %}"}
+        %script{src:"{%static 'js/backbone.js' %}"}
+        %script{src:"{%static 'js/JSXTransformer.js' %}"}
+        %script{src:"{%static 'js/react.js' %}"}
+        %script{src:"{%static 'js/chat/chat.js' %}"}
+        %script{type:"text/jsx", src:"{%static 'js/chat/components.react.js' %}"}
+
+    {% endaddtoblock %}

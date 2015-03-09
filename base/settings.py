@@ -144,7 +144,9 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
-INTERNAL_APPS = []
+INTERNAL_APPS = [
+    'chat',
+]
 
 EXTERNAL_APPS = [
     'django.contrib.auth',
