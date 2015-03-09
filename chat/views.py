@@ -18,12 +18,13 @@ class SimpleMessageChat(APIView):
         super(SimpleMessageChat, self).__init__(*args, **kwarg)
 
     def get(self, request, *args, **kwargs):
-        foo = self.redis.lrange(self.channel_key, -10, -1)
-        baa = []
+        raw_messages = self.redis.lrange(self.channel_key, -10, -1)
+        last_massages = []
 
-        for i in foo:
-            baa.append(json.loads(i))
-        return Response(baa)
+        for i in raw_messages:
+            last_massages.append(json.loads(i))
+
+        return Response(last_massages)
 
     def post(self, request, *args, **kwargs):
         global counter
