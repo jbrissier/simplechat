@@ -12,13 +12,32 @@ class MessageStore extends Backbone.Collection
     model: MessageObject
 
 
+class StateModel extends Backbone.Model
+    url: window.message_backend
+    initialize:->
+        @messages = new MessageStore()
 
-window.username = prompt("Wie ist dein Name?");
+    defaults:
+        count : 0
 
+    pare: (response)->
+        if _.has(response, 'messages')
+            if @messages
+                @messages.reset(response.messages)
+            else
+                @messages = new MessageStore(response.messages)
+
+            delete response.messages
+
+        return response
+
+
+
+
+window.username = "jochen"#prompt("Wie ist dein Name?");
+window.state = new StateModel()
+window.state.fetch()
 window.message_obj = MessageObject
-window.message_store = new MessageStore()
-window.message_store.fetch()
+window.message_store = window.state.messages
 
-window.setInterval(->
-        window.message_store.fetch()
-    ,1000)
+
