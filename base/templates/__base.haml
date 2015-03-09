@@ -1,11 +1,11 @@
-{% load staticfiles compress %}
+{% load staticfiles compress sekizai_tags%}
 
 <!doctype html>
 %html{lang:'de'}
     %head
         %meta{charset:'utf-8'}
         %meta{http-equiv:"X-UA-Compatible", content:"IE=edge"}
-        %meta{name:"viewport", content:"width=device-width, initial-scale=1"}
+        %meta{name:"viewport", content:"width=device-width, initial-scale=1 maximum-scale=1"}
         %title
             -block 'title'
                 Default Title
@@ -15,15 +15,18 @@
             /bootstrap
             %link{rel:"stylesheet", href:"{% static 'css/bootstrap-theme.min.css'%}"}
             %link{rel:"stylesheet", href:"{% static 'css/bootstrap.min.css'%}"}
+            %link{rel:"stylesheet", href:"{% static 'css/font-awesome.min.css'%}"}
 
+        {% render_block "css" %}
 
         - compress js
             %script{src:"{%static 'js/vendor/modernizr-2.6.2.min.js' %}"}
             %script{src:"{%static 'js/vendor/jquery-1.10.2.min.js' %}"}
             %script{src:"{%static 'js/vendor/bootstrap.min.js' %}"}
 
-
     %body
         .content
             -block 'content'
                 Content
+
+        {% render_block "js" %}
