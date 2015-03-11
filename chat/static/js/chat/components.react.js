@@ -23,7 +23,7 @@ var ChatInput = React.createClass({
 
 
     render:function(){
-        return (<div className="row" >
+        return (<div className="row message-input" >
                 <div className="col-xs-12">
                 <input placeholder="schreib was" className="col-xs-12" type="txt" onKeyDown={this.handleInput}/>
                 </div>
@@ -53,7 +53,7 @@ var ChatApp = React.createClass({
 
 
         return (<div>
-                <div className="well">{messages}</div>
+                <div className="well chat-messages">{messages}</div>
                 <ChatInput />
                 </div>
                 )
