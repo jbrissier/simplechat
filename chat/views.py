@@ -24,7 +24,6 @@ class SimpleMessageChat(APIView):
 
         if 'count' in request.GET:
             count = int(request.GET['count'])
-            print 'count..............'
             if count == 0:
                 count = -10
             raw_messages = self.redis.lrange(self.channel_key,  count, -1)
